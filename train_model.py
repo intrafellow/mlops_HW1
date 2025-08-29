@@ -57,10 +57,11 @@ def _experiments(seed: int) -> Dict[str, Pipeline]:
         n_jobs=-1,
     )
     rf_tuned = RandomForestClassifier(
-        n_estimators=400,
-        max_depth=12,
+        n_estimators=800,
+        max_depth=20,
         min_samples_split=2,
-        min_samples_leaf=2,
+        min_samples_leaf=4,
+        class_weight='balanced',
         random_state=seed,
         n_jobs=-1,
     )

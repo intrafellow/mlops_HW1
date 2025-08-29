@@ -2,17 +2,17 @@ stages:
   data_load:
     cmd: python dataloader.py --in WineQT.csv --out-dir .
     deps:
-      - dataloader.py
-      - WineQT.csv
+    - dataloader.py
+    - WineQT.csv
     outs:
-      - train.csv
-      - test.csv
+    - train.csv
+    - test.csv
 
   train:
     cmd: python train_model.py --train train.csv --test test.csv --seed 42
     deps:
-      - train_model.py
-      - train.csv
-      - test.csv
+    - test.csv
+    - train.csv
+    - train_model.py
     outs:
-      - model_weights/best_model.pkl
+    - model_weights/best_model.pkl
