@@ -1,1 +1,10 @@
 /WineQT.csv
+.venv
+__pycache__/
+.DS_Store
+*.log
+/train.csv
+/test.csv
+mlruns/
+model_weights/
+

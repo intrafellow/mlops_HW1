@@ -1,0 +1,42 @@
+schema: '2.0'
+stages:
+  data_load:
+    cmd: python dataloader.py --in WineQT.csv --out-dir .
+    deps:
+    - path: WineQT.csv
+      hash: md5
+      md5: e2e57e4c41e6ee0213fb12e5a70f4bfb
+      size: 78057
+    - path: dataloader.py
+      hash: md5
+      md5: 8629b68d102aaeeb84d51b94b83a9f20
+      size: 5032
+    outs:
+    - path: test.csv
+      hash: md5
+      md5: 07bcd950f5134fab6dd6bbcfecc2787d
+      size: 13453
+    - path: train.csv
+      hash: md5
+      md5: 5a88493308d7f213e27361c09227c997
+      size: 53582
+  train:
+    cmd: python train_model.py --train train.csv --test test.csv --seed 42
+    deps:
+    - path: test.csv
+      hash: md5
+      md5: 07bcd950f5134fab6dd6bbcfecc2787d
+      size: 13453
+    - path: train.csv
+      hash: md5
+      md5: 5a88493308d7f213e27361c09227c997
+      size: 53582
+    - path: train_model.py
+      hash: md5
+      md5: 346d572308d6157831550c729f39b6a1
+      size: 6989
+    outs:
+    - path: model_weights/best_model.pkl
+      hash: md5
+      md5: e513cb67f8343063b2fdc891dc280b39
+      size: 7039309
